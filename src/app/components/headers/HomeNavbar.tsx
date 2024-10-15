@@ -158,9 +158,9 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 				<Stack className={"header-frame"}>
 					<Stack className={"detail"}>
 						<Box className={"head-main-txt"}>
-							World's Most Delicious Cousine
+							World's Most Delicious Burger
 						</Box>
-						<Box className={"wel-txt"}> The Choice, not just a choice</Box>
+						<Box className={"wel-txt"}> Moms Touch taste is your hot Taste </Box>
 						<Box className={"service-txt"}> 24 hours service</Box>
 						<Box className={"signup"}>
 							{!authMember ? (

@@ -1,12 +1,4 @@
-import {
-	Box,
-	Button,
-	Container,
-	ListItemIcon,
-	Menu,
-	MenuItem,
-	Stack,
-} from "@mui/material";
+import {Box,Button,Container,ListItemIcon,Menu,MenuItem,Stack,} from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 import Basket from "./Basket";
@@ -29,16 +21,8 @@ interface OtherNavbarProps {
 	handleLogoutRequest: () => void;
 }
 export default function OtherNavbar(props: OtherNavbarProps) {
-	const {
-		cartItems,
-		onAdd,
-		onRemove,
-		onDelete,
-		onDeleteAll,
-		setSignupOpen,
-		setLoginOpen,
-		handleLogoutClick,
-		anchorEl,
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen, handleLogoutClick,
+    anchorEl,
 		handleCloseLogout,
 		handleLogoutRequest,
 	} = props;

@@ -23,13 +23,8 @@ import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 
 // redux slice & selector
-const actionDispatch = (dispatch: Dispatch) => ({
-	setProducts: (data: Product[]) => dispatch(setProducts(data)),
-});
-
-const productsRetriever = createSelector(retrieveProducts, (products) => ({
-	products,
-}));
+const actionDispatch = (dispatch: Dispatch) => ({setProducts: (data: Product[]) => dispatch(setProducts(data)),});
+const productsRetriever = createSelector(retrieveProducts, (products) => ({products,}));
 
 interface ProductsProps {
 	onAdd: (item: CartItem) => void;
