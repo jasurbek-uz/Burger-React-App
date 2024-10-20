@@ -75,8 +75,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 	const handleSignupRequest = async () => {
 		try {
 			console.log("inputs:", memberNick, memberPhone, memberPassword);
-			const isFull =
-				memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+			const isFull = memberNick !== "" && memberPhone !== "" && memberPassword !== "";
 			if (isFull) throw new Error(Messages.error3);
 
 			const signupInput: MemberInput = {
@@ -170,6 +169,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 								sx={{ marginTop: "30px", width: "120px" }}
 								variant="extended"
 								color="primary"
+								onClick={handleSignupRequest}
 							>
 								<LoginIcon sx={{ mr: 1 }} />
 								Signup

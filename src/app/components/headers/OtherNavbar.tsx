@@ -1,4 +1,4 @@
-import {Box,Button,Container,ListItemIcon,Menu,MenuItem,Stack,} from "@mui/material";
+import {Box,Button,Container,ListItemIcon,Menu,MenuItem,Stack,} from "@mui/material";	
 import { NavLink } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 import Basket from "./Basket";
@@ -14,17 +14,13 @@ interface OtherNavbarProps {
 	onDeleteAll: () => void;
 	setSignupOpen: (isOpen: boolean) => void;
 	setLoginOpen: (isOpen: boolean) => void;
-	// login process
 	handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
 	anchorEl: HTMLElement | null;
 	handleCloseLogout: () => void;
 	handleLogoutRequest: () => void;
 }
 export default function OtherNavbar(props: OtherNavbarProps) {
-  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen, handleLogoutClick,
-    anchorEl,
-		handleCloseLogout,
-		handleLogoutRequest,
+	const {cartItems, onAdd, onRemove, onDelete, onDeleteAll, setSignupOpen, setLoginOpen, handleLogoutClick, anchorEl, handleCloseLogout,handleLogoutRequest,
 	} = props;
 
 	const { authMember } = useGlobals();
@@ -33,11 +29,6 @@ export default function OtherNavbar(props: OtherNavbarProps) {
 		<div className="other-navbar">
 			<Container className="navbar-container">
 				<Stack className="menu">
-					<Box>
-						<NavLink to="/">
-							<img className="brand-logo" src="/icons/burak.svg" />
-						</NavLink>
-					</Box>
 					<Stack className="links">
 						<Box className={"hover-line"}>
 							<NavLink to="/">Home</NavLink>

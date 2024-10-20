@@ -45,11 +45,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 		<div className="home-navbar">
 			<Container className="navbar-container">
 				<Stack className="menu">
-					<Box>
-						<NavLink to="/">
-							<img className="brand-logo" src="/icons/burak.svg" />
-						</NavLink>
-					</Box>
 					<Stack className="links">
 						<Box className={"hover-line"}>
 							<NavLink to="/" activeClassName={"underline"}>
@@ -157,10 +152,11 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 				</Stack>
 				<Stack className={"header-frame"}>
 					<Stack className={"detail"}>
-						<Box className={"head-main-txt"}>
-							World's Most Delicious Burger
+						<Box className={"head-main-txt"}>World's Most Delicious Burger</Box>
+						<Box className={"wel-txt"}>
+							{" "}
+							Moms Touch taste is your hot Taste{" "}
 						</Box>
-						<Box className={"wel-txt"}> Moms Touch taste is your hot Taste </Box>
 						<Box className={"service-txt"}> 24 hours service</Box>
 						<Box className={"signup"}>
 							{!authMember ? (
@@ -174,9 +170,6 @@ export default function HomeNavbar(props: HomeNavbarProps) {
 							) : null}
 						</Box>
 					</Stack>
-					<Box className={"logo-frame"}>
-						<div className={"logo-img"}> </div>
-					</Box>
 				</Stack>
 			</Container>
 		</div>
