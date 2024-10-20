@@ -23,13 +23,8 @@ import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 
 // redux slice & selector
-const actionDispatch = (dispatch: Dispatch) => ({
-	setProducts: (data: Product[]) => dispatch(setProducts(data)),
-});
-
-const productsRetriever = createSelector(retrieveProducts, (products) => ({
-	products,
-}));
+const actionDispatch = (dispatch: Dispatch) => ({setProducts: (data: Product[]) => dispatch(setProducts(data)),});
+const productsRetriever = createSelector(retrieveProducts, (products) => ({products,}));
 
 interface ProductsProps {
 	onAdd: (item: CartItem) => void;
@@ -96,7 +91,7 @@ export default function Products(props: ProductsProps) {
 				<Stack flexDirection={"column"} alignItems={"center"}>
 					<Stack className={"avatar-big-box"}>
 						<Stack className={"top-text"}>
-							<p>Burak Restaurant</p>
+							<p>Mom's  Touch</p>
 							<Stack className={"single-search-big-box"}>
 								<input
 									type={"search"}
@@ -195,7 +190,7 @@ export default function Products(props: ProductsProps) {
 										searchCollectionHandler(ProductCollection.SALAD)
 									}
 								>
-									Salad
+									 BURGER
 								</Button>
 								<Button
 									variant={"contained"}
@@ -208,7 +203,7 @@ export default function Products(props: ProductsProps) {
 										searchCollectionHandler(ProductCollection.DISH)
 									}
 								>
-									Dish
+									SET
 								</Button>
 							</div>
 						</Stack>
@@ -305,16 +300,16 @@ export default function Products(props: ProductsProps) {
 					<Box className={"category-title"}>Our Family Brands</Box>
 					<Stack className={"brand-list"}>
 						<Box className={"review-box"}>
-							<img src={"/img/gurme.webp"} />
+							<img src={"/img/nusret1.webp"} />
 						</Box>
 						<Box className={"review-box"}>
-							<img src={"/img/sweets.webp"} />
+							<img src={"/img/burger-brand.webp"} />
 						</Box>
 						<Box className={"review-box"}>
-							<img src={"/img/seafood.webp"} />
+							<img src={"/img/burger-brand3.webp"} />
 						</Box>
 						<Box className={"review-box"}>
-							<img src={"/img/doner.webp"} />
+							<img src={"/img/burger brand4.webp"} />
 						</Box>
 					</Stack>
 				</Container>

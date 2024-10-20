@@ -61,7 +61,8 @@ export default function HomePage() {
 			.getTopUsers()
 			.then((data) => setTopUsers(data))
 			.catch((err) => console.log(err));
-	}, []); 
+  }, []); 
+  
 	return (
 		<div className={"homepage"}>
 			<Statistics />
