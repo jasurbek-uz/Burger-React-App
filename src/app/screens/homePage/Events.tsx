@@ -52,7 +52,7 @@ export default function Events() {
 
 											<div className={"bott-info"}>
 												<div className={"bott-info-main"}>
-													<img src={"/icons/calendar.svg"} />
+													<img src={"/img/burger image.wepg"} />
 													{value.date}
 												</div>
 												<div className={"bott-info-main"}>
