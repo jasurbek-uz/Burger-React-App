@@ -35,7 +35,7 @@ export default function HomePage() {
 				page: 1,
 				limit: 4,
 				order: "productViews",
-				productCollection: ProductCollection.DISH,
+				productCollection: ProductCollection.SET,
 			})
 			.then((data) => {
 				console.log("data", data);
@@ -48,7 +48,7 @@ export default function HomePage() {
 				page: 1,
 				limit: 4,
 				order: "createdAt",
-				productCollection: ProductCollection.DISH,
+				productCollection: ProductCollection.BURGER,
 			})
 			.then((data) => {
 				console.log("data", data);

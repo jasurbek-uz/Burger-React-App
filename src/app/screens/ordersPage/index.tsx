@@ -33,7 +33,7 @@ export default function OrdersPage() {
   const { orderBuilder, authMember } = useGlobals();
   const history = useHistory();
   const [value, setValue] = useState("1");
-  const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({
+  const [orderInquiry, setOrderInquiry] = useState<OrderInquiry>({  //setOrderInquiry shu ishlamayapti
     page: 1,
     limit: 5,
     orderStatus: OrderStatus.PAUSE,});

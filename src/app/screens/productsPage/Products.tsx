@@ -8,7 +8,6 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { useSelector }  from "react-redux";
@@ -38,7 +37,7 @@ export default function Products(props: ProductsProps) {
 		page: 1,
 		limit: 8,
 		order: "createAdt",
-		productCollection: ProductCollection.DISH,
+		productCollection: ProductCollection.SET,
 		search: "",
   });
   
@@ -182,12 +181,12 @@ export default function Products(props: ProductsProps) {
 								<Button
 									variant={"contained"}
 									color={
-										productSearch.productCollection === ProductCollection.SALAD
+										productSearch.productCollection === ProductCollection.BURGER
 											? "primary"
 											: "secondary"
 									}
 									onClick={() =>
-										searchCollectionHandler(ProductCollection.SALAD)
+										searchCollectionHandler(ProductCollection.BURGER)
 									}
 								>
 									 BURGER
@@ -195,12 +194,12 @@ export default function Products(props: ProductsProps) {
 								<Button
 									variant={"contained"}
 									color={
-										productSearch.productCollection === ProductCollection.DISH
+										productSearch.productCollection === ProductCollection.SET
 											? "primary"
 											: "secondary"
 									}
 									onClick={() =>
-										searchCollectionHandler(ProductCollection.DISH)
+										searchCollectionHandler(ProductCollection.SET)
 									}
 								>
 									SET
@@ -214,7 +213,7 @@ export default function Products(props: ProductsProps) {
 									const imagePath = `${serverApi}/${product.productImages[0]}`;
 									const sizeVolume =
 										product.productCollection === ProductCollection.DRINK
-											? product.ProductVolume + "litre"
+											? product.ProductVolume + ""
 											: product.productSize + "size";
 									return (
 										<Stack

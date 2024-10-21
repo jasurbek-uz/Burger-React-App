@@ -3,37 +3,36 @@ import { Box, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import TabPanel from "@mui/lab/TabPanel";
 
-import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrievePausedOrders } from "./selector";
+import { useSelector } from "react-redux";
 import { Messages, serverApi } from "../../../lib/config";
-import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/orders";
 import { Product } from "../../../lib/types/product";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/orders";
 import { T } from "../../../lib/types/common";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobals";
-import { Message } from "@mui/icons-material";
 import OrderService from "../../services/OrderService";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
 
-/** Redux Slice & Selector */
+/** Redux slice & Selector */
+
 const pausedOrdersRetriever = createSelector(
 	retrievePausedOrders,
 	(pausedOrders) => ({ pausedOrders })
 );
 
-interface PausedOrdersProps{
-  setValue:(input: string) => void;
+interface PausedOrdersProps {
+	setValue: (input: string) => void;
 }
 
 export default function PausedOrders(props: PausedOrdersProps) {
-  const { setValue } = props;
-  const { authMember, setOrderBuilder} = useGlobals();
-  const { pausedOrders } = useSelector(pausedOrdersRetriever);
+	const { setValue } = props;
+	const { authMember, setOrderBuilder } = useGlobals();
+	const { pausedOrders } = useSelector(pausedOrdersRetriever);
 
-
- // handlers //
-  const deleteOrderHandler = async (e: T) => {
+	/**Handlers */
+	const deleteOrderHandler = async (e: T) => {
 		try {
 			if (!authMember) throw new Error(Messages.error2);
 			const orderId = e.target.value;
@@ -42,10 +41,35 @@ export default function PausedOrders(props: PausedOrdersProps) {
 				orderStatus: OrderStatus.DELETE,
 			};
 
-			const confirmation = window.confirm("Do you want to delete the order?");
+			const confirmation = window.confirm("Do you want to delete the orders?");
 			if (confirmation) {
 				const order = new OrderService();
 				await order.updateOrders(input);
+				//Order ReBuild
+				setOrderBuilder(new Date());
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const processOrderHandler = async (e: T) => {
+		try {
+			if (!authMember) throw new Error(Messages.error2);
+			//Payment Process
+			const orderId = e.target.value;
+			const input: OrderUpdateInput = {
+				orderId: orderId,
+				orderStatus: OrderStatus.PROCESS,
+			};
+
+			const confirmation = window.confirm(
+				"Do you want to proceed the payment?"
+			);
+			if (confirmation) {
+				const order = new OrderService();
+				await order.updateOrders(input);
+				setValue("2");
 				setOrderBuilder(new Date());
 			}
 		} catch (err) {
@@ -53,37 +77,12 @@ export default function PausedOrders(props: PausedOrdersProps) {
 			sweetErrorHandling(err).then();
 		}
 	};
- 
-  const processOrderHandler = async (e:T) => {
-    try {
-      if (!authMember) throw new Error(Messages.error2);
-      // PAYMENT PROCESS
-      const orderId = e.target.value;
-      const input: OrderUpdateInput = {
-        orderId: orderId,
-        orderStatus: OrderStatus.PROCESS,
-      };
-
-      const confirmation = window.confirm("Do you want to proceed with payment?");
-      if (confirmation) {
-        const order = new OrderService();
-        await order.updateOrders(input);
-        setValue("2");
-        setOrderBuilder(new Date());
-
-      }
-    } catch (err) {
-      console.log(err);
-      sweetErrorHandling(err)
-        .then();
-    }
-  }
 
 	return (
 		<TabPanel value={"1"}>
 			<Stack>
-        {pausedOrders?.map((order: Order) => {
-          return (
+				{pausedOrders?.map((order: Order) => {
+					return (
 						<Box key={order._id} className={"order-main-box"}>
 							<Box className={"order-box-scroll"}>
 								{order?.orderItems?.map((item: OrderItem) => {
@@ -135,23 +134,28 @@ export default function PausedOrders(props: PausedOrdersProps) {
 								<Button
 									value={order._id}
 									variant="contained"
-                  className={"pay-button"}
-                  onClick={processOrderHandler}
-									>
+									className={"pay-button"}
+									onClick={processOrderHandler}
+								>
 									Payment
 								</Button>
 							</Box>
 						</Box>
 					);
-        })}
-				 { !pausedOrders || (pausedOrders.length === 0 &&(
-					<Box display={"flex"} flexDirection={"row"} justifyContent={"center"}>
-						<img
-							src={"/icons/noimage-list.svg"}
-							style={{ width: 300, height: 300 }}
-						/>
-					</Box>
-				))}
+				})}
+				{!pausedOrders ||
+					(pausedOrders.length === 0 && (
+						<Box
+							display={"flex"}
+							flexDirection={"row"}
+							justifyContent={"center"}
+						>
+							<img
+								src={"/icons/noimage-list.svg"}
+								style={{ width: 300, height: 300 }}
+							/>
+						</Box>
+					))}
 			</Stack>
 		</TabPanel>
 	);

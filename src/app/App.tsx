@@ -22,7 +22,7 @@ function App() {
 	const location = useLocation();
 	console.log("location:", location);
 	const { setAuthMember } = useGlobals();
-	const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket(); // usebasket hook folderdan data kelyapti
+	const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
 	const [signupOpen, setSignupOpen] = useState<boolean>(false);
 	const [loginOpen, setLoginOpen] = useState<boolean>(false);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
