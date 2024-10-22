@@ -16,7 +16,7 @@ class MemberService {
 
 			return result.data;
 		} catch (err) {
-			console.log("Erros, getTopUsers:", err);
+			console.log("Error, getTopUsers:", err);
 			throw err;
 		}
 	}
@@ -43,7 +43,7 @@ class MemberService {
 
 			const member: Member = result.data.member;
 			console.log("member:", member);
-			localStorage.setItm("memberData", JSON.stringify(member));
+			localStorage.setItem("memberData", JSON.stringify(member));
 
 			return member;
 		} catch (err) {
